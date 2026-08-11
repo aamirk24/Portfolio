@@ -8,7 +8,7 @@ def create_app(test_config=None):
     if test_config is not None:
         app.config.from_mapping(test_config)
 
-    from portfolio.routes import main
+    from app.routes import main
 
     app.register_blueprint(main)
 
