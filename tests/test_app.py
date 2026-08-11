@@ -15,3 +15,10 @@ def test_homepage(client):
     assert b"aamirk2405@gmail.com" in response.data
     assert b"https://github.com/aamirk24" in response.data
     assert b"https://www.linkedin.com/in/aamirkhan05/" in response.data
+    assert response.data.count(b'class="project-card"') == 6
+    assert b"ScholarGraph" in response.data
+    assert b"Nonaga" in response.data
+    assert b"RepIT" in response.data
+    assert b"Auction Website" in response.data
+    assert b"Movie Genre Classification" in response.data
+    assert b"VibeCheck" in response.data
