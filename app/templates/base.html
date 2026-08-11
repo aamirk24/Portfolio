@@ -3,9 +3,61 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Aamir Khan builds software across backend engineering, data, and applied AI.">
+    <meta name="theme-color" content="#f4f1ea">
     <title>{% block title %}Aamir Khan{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   </head>
   <body>
-    {% block content %}{% endblock %}
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md" aria-label="Primary navigation">
+        <div class="site-container container-fluid">
+          <a class="navbar-brand" href="{{ url_for('main.index') }}" aria-label="Aamir Khan, home">
+            <span aria-hidden="true">AK</span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNavigation" aria-controls="primaryNavigation" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="menu-label">Menu</span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="primaryNavigation">
+            <ul class="navbar-nav ms-auto align-items-md-center">
+              <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
+              <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+              <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+              <li class="nav-item"><a class="nav-link nav-link-contact" href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <div class="site-container footer-grid">
+        <div>
+          <p class="footer-label">Have a role or project in mind?</p>
+          <a class="footer-email" href="mailto:aamirk2405@gmail.com">aamirk2405@gmail.com</a>
+        </div>
+
+        <div class="footer-links" aria-label="Social links">
+          <a href="https://github.com/aamirk24" target="_blank" rel="noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+          <a href="https://www.linkedin.com/in/aamirkhan05/" target="_blank" rel="noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+        </div>
+
+        <p class="footer-note">Designed and built by Aamir Khan.</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>

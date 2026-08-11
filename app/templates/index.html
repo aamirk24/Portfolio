@@ -3,7 +3,37 @@
 {% block title %}Aamir Khan | Portfolio{% endblock %}
 
 {% block content %}
-  <main>
-    <h1>Portfolio under development</h1>
-  </main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="site-container hero-grid">
+      <div class="hero-intro">
+        <p class="eyebrow">Software engineering <span aria-hidden="true">·</span> Data <span aria-hidden="true">·</span> Applied AI</p>
+        <h1 id="hero-title">I build software that makes complex information useful.</h1>
+        <p class="hero-summary">First-Class Computer Science graduate building Python systems across backend engineering, data, and applied AI.</p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#work">Explore my work</a>
+          <a class="text-link" href="https://github.com/aamirk24" target="_blank" rel="noreferrer">View GitHub<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens in a new tab)</span></a>
+        </div>
+      </div>
+
+      <div class="hero-marker" aria-hidden="true">
+        <span class="marker-index">01</span>
+        <span class="marker-line"></span>
+        <span class="marker-copy">Based in Reading, UK</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage-placeholder" id="work" aria-labelledby="work-title">
+    <div class="site-container placeholder-grid">
+      <p class="section-index">02 / Selected work</p>
+      <div>
+        <h2 id="work-title">Project case studies are the next layer.</h2>
+        <p>The portfolio structure is in place. Selected work will be introduced in the next development stage.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="visually-hidden" id="about" aria-label="About section placeholder"></section>
+  <section class="visually-hidden" id="experience" aria-label="Experience section placeholder"></section>
 {% endblock %}
