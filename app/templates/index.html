@@ -62,6 +62,61 @@
     </div>
   </section>
 
-  <section class="visually-hidden" id="about" aria-label="About section placeholder"></section>
+  <section class="about-section" id="about" aria-labelledby="about-title">
+    <div class="site-container about-grid">
+      <div class="about-heading">
+        <p class="section-index">03 / About</p>
+        <h2 id="about-title">Curious across disciplines. Grounded in engineering.</h2>
+      </div>
+
+      <div class="about-copy">
+        <p class="about-lead">I’m Aamir, a First-Class Computer Science graduate from the University of Leeds.</p>
+        <p>My work sits where software engineering, data, and applied AI overlap. I enjoy taking an idea from its underlying data model through to a usable interface, while keeping the implementation understandable and testable.</p>
+        <p>That range has taken me from semantic research tools and real-time multiplayer systems to fitness software and evaluated machine-learning pipelines. I’m now looking to bring that practical breadth to a graduate engineering team.</p>
+
+        <dl class="about-facts">
+          <div>
+            <dt>Based in</dt>
+            <dd>Reading, UK</dd>
+          </div>
+          <div>
+            <dt>Education</dt>
+            <dd>BSc Computer Science</dd>
+          </div>
+          <div>
+            <dt>Degree</dt>
+            <dd>First-Class Honours</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="capabilities-section" aria-labelledby="capabilities-title">
+    <div class="site-container">
+      <div class="capabilities-heading">
+        <p class="section-index">04 / Capabilities</p>
+        <h2 id="capabilities-title">Three connected ways I contribute.</h2>
+      </div>
+
+      <div class="capability-list">
+        {% for capability in capabilities %}
+          <article class="capability-item">
+            <span class="capability-number">{{ capability.number }}</span>
+            <div class="capability-content">
+              <h3>{{ capability.title }}</h3>
+              <p>{{ capability.description }}</p>
+              <ul aria-label="{{ capability.title }} skills">
+                {% for skill in capability.skills %}
+                  <li>{{ skill }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
   <section class="visually-hidden" id="experience" aria-label="Experience section placeholder"></section>
 {% endblock %}

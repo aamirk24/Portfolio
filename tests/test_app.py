@@ -22,6 +22,12 @@ def test_homepage(client):
     assert b"Auction Website" in response.data
     assert b"Movie Genre Classification" in response.data
     assert b"VibeCheck" in response.data
+    assert b"Curious across disciplines. Grounded in engineering." in response.data
+    assert b"First-Class Computer Science graduate from the University of Leeds" in response.data
+    assert response.data.count(b'class="capability-item"') == 3
+    assert b"Software engineering" in response.data
+    assert b"Data systems" in response.data
+    assert b"Applied AI &amp; ML" in response.data
 
 
 def test_project_detail(client):

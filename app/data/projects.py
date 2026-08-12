@@ -209,6 +209,58 @@ FEATURED_PROJECTS = (
 )
 
 
+CAPABILITIES = (
+    {
+        "number": "01",
+        "title": "Software engineering",
+        "description": (
+            "Building tested Python services and full-stack applications with clear "
+            "data models, authenticated workflows, and dependable server-side logic."
+        ),
+        "skills": (
+            "Python",
+            "Flask",
+            "FastAPI",
+            "JavaScript",
+            "REST APIs",
+            "pytest",
+        ),
+    },
+    {
+        "number": "02",
+        "title": "Data systems",
+        "description": (
+            "Designing relational schemas and ingestion workflows that turn external "
+            "data into structured, searchable, and useful application features."
+        ),
+        "skills": (
+            "SQL",
+            "PostgreSQL",
+            "SQLAlchemy",
+            "pgvector",
+            "pandas",
+            "Alembic",
+        ),
+    },
+    {
+        "number": "03",
+        "title": "Applied AI & ML",
+        "description": (
+            "Applying established models and algorithms with attention to evaluation, "
+            "latency, feature design, and the product experience around their outputs."
+        ),
+        "skills": (
+            "scikit-learn",
+            "Semantic search",
+            "Text classification",
+            "PCA",
+            "Regression",
+            "Minimax",
+        ),
+    },
+)
+
+
 def get_project(slug):
     """Return a project matching the supplied slug, if one exists."""
     return next(

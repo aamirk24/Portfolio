@@ -1,6 +1,11 @@
 from flask import Blueprint, abort, render_template
 
-from app.data.projects import FEATURED_PROJECTS, get_adjacent_projects, get_project
+from app.data.projects import (
+    CAPABILITIES,
+    FEATURED_PROJECTS,
+    get_adjacent_projects,
+    get_project,
+)
 
 
 main = Blueprint("main", __name__)
@@ -9,7 +14,11 @@ main = Blueprint("main", __name__)
 @main.get("/")
 def index():
     """Render the portfolio landing page."""
-    return render_template("index.html", featured_projects=FEATURED_PROJECTS)
+    return render_template(
+        "index.html",
+        capabilities=CAPABILITIES,
+        featured_projects=FEATURED_PROJECTS,
+    )
 
 
 @main.get("/projects/<slug>")

@@ -802,6 +802,124 @@ h1 {
   color: #8ea6ff;
 }
 
+.about-section {
+  padding-block: clamp(6rem, 12vw, 11rem);
+}
+
+.about-grid {
+  display: grid;
+  gap: clamp(3rem, 8vw, 9rem);
+  grid-template-columns: minmax(0, 0.9fr) minmax(20rem, 0.75fr);
+}
+
+.about-heading h2,
+.capabilities-heading h2 {
+  font-size: clamp(2.8rem, 6vw, 6.2rem);
+  line-height: 1.02;
+  max-width: 12ch;
+}
+
+.about-copy {
+  align-self: end;
+}
+
+.about-copy > p {
+  color: var(--colour-muted);
+  font-size: clamp(1rem, 1.45vw, 1.18rem);
+  margin-bottom: 1.5rem;
+}
+
+.about-copy .about-lead {
+  color: var(--colour-ink);
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  letter-spacing: -0.025em;
+  line-height: 1.4;
+}
+
+.about-facts {
+  border-top: 1px solid var(--colour-line);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+}
+
+.about-facts div {
+  border-bottom: 1px solid var(--colour-line);
+  padding: 1.1rem 0;
+}
+
+.about-facts dt,
+.capability-number {
+  color: var(--colour-muted);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+}
+
+.about-facts dd {
+  font-size: 0.9rem;
+  margin: 0.3rem 0 0;
+}
+
+.capabilities-section {
+  background: var(--colour-surface);
+  padding-block: clamp(5rem, 10vw, 9rem);
+}
+
+.capabilities-heading {
+  display: grid;
+  gap: 2rem 4rem;
+  grid-template-columns: minmax(10rem, 0.35fr) minmax(0, 1fr);
+  margin-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.capability-list {
+  border-top: 1px solid var(--colour-line);
+}
+
+.capability-item {
+  border-bottom: 1px solid var(--colour-line);
+  display: grid;
+  gap: 2rem 4rem;
+  grid-template-columns: minmax(10rem, 0.35fr) minmax(0, 1fr);
+  padding-block: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.capability-number {
+  color: var(--colour-accent);
+}
+
+.capability-content h3 {
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+}
+
+.capability-content > p {
+  color: var(--colour-muted);
+  margin: 1.5rem 0 0;
+  max-width: 42rem;
+}
+
+.capability-content ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+}
+
+.capability-content li {
+  border: 1px solid var(--colour-line);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  padding: 0.45rem 0.7rem;
+  text-transform: uppercase;
+}
+
 .site-footer {
   border-top: 1px solid var(--colour-line);
   padding-block: clamp(4rem, 8vw, 7rem) 2rem;
@@ -893,6 +1011,7 @@ h1 {
   }
 
   .section-heading,
+  .capabilities-heading,
   .footer-grid {
     grid-template-columns: 1fr;
   }
@@ -900,7 +1019,13 @@ h1 {
   .project-card-link,
   .case-study-grid,
   .case-study-copy-grid,
-  .evidence-grid {
+  .evidence-grid,
+  .about-grid,
+  .capability-item {
+    grid-template-columns: 1fr;
+  }
+
+  .about-facts {
     grid-template-columns: 1fr;
   }
 
