@@ -15,6 +15,7 @@ def test_homepage(client):
     assert b"aamirk2405@gmail.com" in response.data
     assert b"https://github.com/aamirk24" in response.data
     assert b"https://www.linkedin.com/in/aamirkhan05/" in response.data
+    assert response.data.count(b"Aamir_Khan_Software_Engineering_CV.pdf") == 4
     assert response.data.count(b'class="project-card"') == 6
     assert b"ScholarGraph" in response.data
     assert b"Nonaga" in response.data
@@ -62,3 +63,13 @@ def test_unknown_project_returns_not_found(client):
     response = client.get("/projects/unknown-project")
 
     assert response.status_code == 404
+
+
+def test_cv_download_is_available(client):
+    response = client.get(
+        "/static/documents/Aamir_Khan_Software_Engineering_CV.pdf"
+    )
+
+    assert response.status_code == 200
+    assert response.mimetype == "application/pdf"
+    assert response.data.startswith(b"%PDF")
