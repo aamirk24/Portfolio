@@ -78,3 +78,31 @@ FEATURED_PROJECTS = (
         "visual": "wave",
     },
 )
+
+
+def get_project(slug):
+    """Return a project matching the supplied slug, if one exists."""
+    return next(
+        (project for project in FEATURED_PROJECTS if project["slug"] == slug),
+        None,
+    )
+
+
+def get_adjacent_projects(slug):
+    """Return the projects immediately before and after the supplied project."""
+    project_index = next(
+        (
+            index
+            for index, project in enumerate(FEATURED_PROJECTS)
+            if project["slug"] == slug
+        ),
+        None,
+    )
+
+    if project_index is None:
+        return None, None
+
+    previous_project = FEATURED_PROJECTS[project_index - 1]
+    next_project = FEATURED_PROJECTS[(project_index + 1) % len(FEATURED_PROJECTS)]
+
+    return previous_project, next_project

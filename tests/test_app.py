@@ -22,3 +22,19 @@ def test_homepage(client):
     assert b"Auction Website" in response.data
     assert b"Movie Genre Classification" in response.data
     assert b"VibeCheck" in response.data
+
+
+def test_project_detail(client):
+    response = client.get("/projects/scholargraph")
+
+    assert response.status_code == 200
+    assert b"ScholarGraph | Aamir Khan" in response.data
+    assert b"29 API endpoints" in response.data
+    assert b'href="/projects/nonaga"' in response.data
+    assert b'href="/projects/vibecheck"' in response.data
+
+
+def test_unknown_project_returns_not_found(client):
+    response = client.get("/projects/unknown-project")
+
+    assert response.status_code == 404

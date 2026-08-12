@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% from "components/project_visual.html" import project_visual %}
+
+{% block title %}{{ project.title }} | Aamir Khan{% endblock %}
+
+{% block content %}
+  <article class="case-study">
+    <header class="case-study-header">
+      <div class="site-container">
+        <a class="back-link" href="{{ url_for('main.index') }}#work"><span aria-hidden="true">←</span> Selected work</a>
+
+        <div class="case-study-heading">
+          <div class="project-meta case-study-meta">
+            <span>{{ project.category }}</span>
+            <span>{{ project.year }}</span>
+          </div>
+          <h1>{{ project.title }}</h1>
+          <p>{{ project.summary }}</p>
+        </div>
+
+        {{ project_visual(project, large=True) }}
+      </div>
+    </header>
+
+    <section class="case-study-foundation" aria-labelledby="case-study-foundation-title">
+      <div class="site-container case-study-grid">
+        <div>
+          <p class="section-index">Project foundation</p>
+          <h2 id="case-study-foundation-title">The case study is being assembled around verified evidence.</h2>
+        </div>
+
+        <div class="project-facts">
+          <div class="project-fact">
+            <span>Selected evidence</span>
+            <strong>{{ project.highlight }}</strong>
+          </div>
+          <div class="project-fact">
+            <span>Core technologies</span>
+            <ul>
+              {% for technology in project.technologies %}
+                <li>{{ technology }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="project-pagination" aria-label="Project navigation">
+      <div class="site-container pagination-grid">
+        <a href="{{ url_for('main.project_detail', slug=previous_project.slug) }}">
+          <span>Previous project</span>
+          <strong><span aria-hidden="true">←</span> {{ previous_project.title }}</strong>
+        </a>
+        <a href="{{ url_for('main.project_detail', slug=next_project.slug) }}">
+          <span>Next project</span>
+          <strong>{{ next_project.title }} <span aria-hidden="true">→</span></strong>
+        </a>
+      </div>
+    </nav>
+  </article>
+{% endblock %}

@@ -330,10 +330,15 @@ h1 {
 
 .project-card {
   border-bottom: 1px solid rgba(244, 241, 234, 0.22);
+  padding-block: clamp(2.5rem, 6vw, 5rem);
+}
+
+.project-card-link {
+  color: inherit;
   display: grid;
   gap: clamp(2rem, 5vw, 5rem);
   grid-template-columns: minmax(16rem, 0.85fr) minmax(0, 1fr);
-  padding-block: clamp(2.5rem, 6vw, 5rem);
+  text-decoration: none;
 }
 
 .project-visual {
@@ -520,6 +525,19 @@ h1 {
   align-self: center;
 }
 
+.project-card-link .project-visual {
+  transition: transform 300ms ease;
+}
+
+.project-card-link:hover .project-visual {
+  transform: scale(0.985);
+}
+
+.project-card-link:hover .project-content h3,
+.project-card-link:hover .project-cta {
+  color: #8ea6ff;
+}
+
 .project-meta {
   color: rgba(244, 241, 234, 0.52);
   display: flex;
@@ -558,6 +576,159 @@ h1 {
   font-size: 0.64rem;
   letter-spacing: 0.03em;
   padding: 0.45rem 0.7rem;
+}
+
+.project-cta {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  margin-top: 2rem;
+  text-decoration: underline;
+  text-transform: uppercase;
+  text-underline-offset: 0.35rem;
+  transition: color var(--transition-fast);
+}
+
+.case-study-header {
+  padding-block: clamp(3rem, 7vw, 7rem);
+}
+
+.back-link {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  text-underline-offset: 0.3rem;
+}
+
+.back-link:hover {
+  color: var(--colour-accent);
+}
+
+.case-study-heading {
+  margin: clamp(4rem, 8vw, 7rem) 0 clamp(3rem, 7vw, 6rem);
+  max-width: 70rem;
+}
+
+.case-study-meta {
+  color: var(--colour-muted);
+  gap: 2rem;
+  justify-content: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.case-study-heading h1 {
+  font-size: clamp(4rem, 10vw, 9rem);
+  line-height: 0.95;
+  max-width: none;
+}
+
+.case-study-heading > p {
+  color: var(--colour-muted);
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  margin-top: 2rem;
+  max-width: 46rem;
+}
+
+.project-visual-large {
+  aspect-ratio: 2 / 1;
+  max-height: 46rem;
+}
+
+.project-visual-large .project-highlight {
+  font-size: clamp(0.68rem, 1vw, 0.85rem);
+}
+
+.case-study-foundation {
+  background: var(--colour-ink);
+  color: var(--colour-canvas);
+  padding-block: clamp(5rem, 10vw, 9rem);
+}
+
+.case-study-grid {
+  display: grid;
+  gap: clamp(3rem, 8vw, 8rem);
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.65fr);
+}
+
+.case-study-foundation .section-index {
+  color: rgba(244, 241, 234, 0.55);
+}
+
+.case-study-foundation h2 {
+  font-size: clamp(2.25rem, 5vw, 4.8rem);
+  line-height: 1.08;
+  max-width: 13ch;
+}
+
+.project-facts {
+  border-top: 1px solid rgba(244, 241, 234, 0.25);
+}
+
+.project-fact {
+  border-bottom: 1px solid rgba(244, 241, 234, 0.25);
+  padding-block: 1.5rem;
+}
+
+.project-fact > span,
+.project-pagination a > span {
+  color: rgba(244, 241, 234, 0.5);
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+}
+
+.project-fact strong {
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 500;
+}
+
+.project-fact ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project-pagination {
+  background: var(--colour-ink);
+  border-top: 1px solid rgba(244, 241, 234, 0.25);
+  color: var(--colour-canvas);
+}
+
+.pagination-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding-block: clamp(2rem, 5vw, 4rem);
+}
+
+.project-pagination a {
+  padding: 1rem 2rem 1rem 0;
+  text-decoration: none;
+}
+
+.project-pagination a:last-child {
+  border-left: 1px solid rgba(244, 241, 234, 0.25);
+  padding-left: 2rem;
+  padding-right: 0;
+  text-align: right;
+}
+
+.project-pagination a > span {
+  margin-bottom: 0.8rem;
+}
+
+.project-pagination strong {
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  font-weight: 500;
+}
+
+.project-pagination a:hover strong {
+  color: #8ea6ff;
 }
 
 .site-footer {
@@ -655,12 +826,32 @@ h1 {
     grid-template-columns: 1fr;
   }
 
-  .project-card {
+  .project-card-link,
+  .case-study-grid {
     grid-template-columns: 1fr;
   }
 
   .project-visual {
     min-height: 12rem;
+  }
+
+  .project-visual-large {
+    aspect-ratio: 4 / 3;
+  }
+
+  .pagination-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-pagination a,
+  .project-pagination a:last-child {
+    border: 0;
+    padding: 1.5rem 0;
+    text-align: left;
+  }
+
+  .project-pagination a + a {
+    border-top: 1px solid rgba(244, 241, 234, 0.25);
   }
 
   .footer-links {

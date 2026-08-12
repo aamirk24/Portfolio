@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "components/project_visual.html" import project_visual %}
 
 {% block title %}Aamir Khan | Portfolio{% endblock %}
 
@@ -37,39 +38,24 @@
       <div class="project-list">
         {% for project in featured_projects %}
           <article class="project-card">
-            <div class="project-visual project-visual-{{ project.visual }}" aria-hidden="true">
-              <span class="project-number">{{ "%02d" | format(loop.index) }}</span>
-              <div class="visual-shape">
-                {% if project.visual == "network" %}
-                  <i></i><i></i><i></i><i></i><i></i>
-                {% elif project.visual == "board" %}
-                  <i></i><i></i><i></i><i></i><i></i><i></i>
-                {% elif project.visual == "rings" %}
-                  <i></i><i></i><i></i>
-                {% elif project.visual == "pulse" %}
-                  <i></i><i></i><i></i><i></i>
-                {% elif project.visual == "frames" %}
-                  <i></i><i></i><i></i>
-                {% else %}
-                  <i></i><i></i><i></i><i></i><i></i>
-                {% endif %}
-              </div>
-              <span class="project-highlight">{{ project.highlight }}</span>
-            </div>
+            <a class="project-card-link" href="{{ url_for('main.project_detail', slug=project.slug) }}" aria-label="View {{ project.title }} case study">
+              {{ project_visual(project, "%02d" | format(loop.index)) }}
 
-            <div class="project-content">
-              <div class="project-meta">
-                <span>{{ project.category }}</span>
-                <span>{{ project.year }}</span>
+              <div class="project-content">
+                <div class="project-meta">
+                  <span>{{ project.category }}</span>
+                  <span>{{ project.year }}</span>
+                </div>
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.summary }}</p>
+                <ul class="technology-list" aria-label="Technologies used">
+                  {% for technology in project.technologies %}
+                    <li>{{ technology }}</li>
+                  {% endfor %}
+                </ul>
+                <span class="project-cta">View case study <span aria-hidden="true">↗</span></span>
               </div>
-              <h3>{{ project.title }}</h3>
-              <p>{{ project.summary }}</p>
-              <ul class="technology-list" aria-label="Technologies used">
-                {% for technology in project.technologies %}
-                  <li>{{ technology }}</li>
-                {% endfor %}
-              </ul>
-            </div>
+            </a>
           </article>
         {% endfor %}
       </div>

@@ -1,0 +1,21 @@
+{% macro project_visual(project, number=None, large=False) %}
+  <div class="project-visual project-visual-{{ project.visual }}{% if large %} project-visual-large{% endif %}" aria-hidden="true">
+    {% if number %}<span class="project-number">{{ number }}</span>{% endif %}
+    <div class="visual-shape">
+      {% if project.visual == "network" %}
+        <i></i><i></i><i></i><i></i><i></i>
+      {% elif project.visual == "board" %}
+        <i></i><i></i><i></i><i></i><i></i><i></i>
+      {% elif project.visual == "rings" %}
+        <i></i><i></i><i></i>
+      {% elif project.visual == "pulse" %}
+        <i></i><i></i><i></i><i></i>
+      {% elif project.visual == "frames" %}
+        <i></i><i></i><i></i>
+      {% else %}
+        <i></i><i></i><i></i><i></i><i></i>
+      {% endif %}
+    </div>
+    <span class="project-highlight">{{ project.highlight }}</span>
+  </div>
+{% endmacro %}
