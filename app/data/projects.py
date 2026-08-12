@@ -261,6 +261,57 @@ CAPABILITIES = (
 )
 
 
+EXPERIENCE = (
+    {
+        "period": "Jun - Aug 2024",
+        "organisation": "BISAG-N",
+        "location": "New Delhi",
+        "role": "Python Developer Intern",
+        "summary": (
+            "Worked in a professional technology environment, strengthened Python "
+            "skills through structured independent practice, and served as a rapporteur "
+            "at the Global India AI Summit."
+        ),
+        "detail": (
+            "Produced a concise internal summary of talks and discussions from senior "
+            "technology leaders."
+        ),
+    },
+    {
+        "period": "Jul - Sep 2023",
+        "organisation": "Avisha Association",
+        "location": "Noida",
+        "role": "Technical Volunteer",
+        "summary": (
+            "Independently built a Python and MySQL desktop application for the NGO's "
+            "local office."
+        ),
+        "detail": (
+            "Enabled the owner to create, edit, delete, and search operational water-pot "
+            "records."
+        ),
+    },
+)
+
+
+EDUCATION = {
+    "period": "Sep 2023 - Jul 2026",
+    "institution": "University of Leeds",
+    "qualification": "BSc Computer Science, First-Class Honours",
+    "average": "72.4% overall average",
+    "highlights": (
+        "Web Application Development - 96%",
+        "Object-Oriented Programming - 86%",
+        "Machine Learning - 80%",
+        "Software Engineering Principles - 80%",
+    ),
+    "scholarship": (
+        "International Excellence Scholarship recipient, receiving £5,000 across the "
+        "degree through continuation awards based on academic performance."
+    ),
+}
+
+
 def get_project(slug):
     """Return a project matching the supplied slug, if one exists."""
     return next(

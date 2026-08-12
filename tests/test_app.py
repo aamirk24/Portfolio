@@ -28,6 +28,12 @@ def test_homepage(client):
     assert b"Software engineering" in response.data
     assert b"Data systems" in response.data
     assert b"Applied AI &amp; ML" in response.data
+    assert response.data.count(b'class="timeline-item"') == 2
+    assert b"BISAG-N" in response.data
+    assert b"Avisha Association" in response.data
+    assert b"University of Leeds" in response.data
+    assert b"72.4% overall average" in response.data
+    assert b"International Excellence Scholarship" in response.data
 
 
 def test_project_detail(client):

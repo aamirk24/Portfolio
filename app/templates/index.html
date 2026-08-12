@@ -118,5 +118,61 @@
     </div>
   </section>
 
-  <section class="visually-hidden" id="experience" aria-label="Experience section placeholder"></section>
+  <section class="experience-section" id="experience" aria-labelledby="experience-title">
+    <div class="site-container">
+      <div class="experience-heading">
+        <p class="section-index">05 / Experience</p>
+        <div>
+          <h2 id="experience-title">Experience shaped by ownership.</h2>
+          <p>Technical work across professional, voluntary, and academic settings.</p>
+        </div>
+      </div>
+
+      <div class="timeline">
+        {% for item in experience %}
+          <article class="timeline-item">
+            <div class="timeline-period">
+              <span>{{ "%02d" | format(loop.index) }}</span>
+              <time>{{ item.period }}</time>
+            </div>
+            <div class="timeline-content">
+              <p class="timeline-role">{{ item.role }}</p>
+              <h3>{{ item.organisation }}</h3>
+              <p class="timeline-location">{{ item.location }}</p>
+              <p>{{ item.summary }}</p>
+              <p>{{ item.detail }}</p>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="education-section" aria-labelledby="education-title">
+    <div class="site-container education-grid">
+      <div class="education-heading">
+        <p class="section-index">06 / Education</p>
+        <h2 id="education-title">A strong academic foundation.</h2>
+      </div>
+
+      <div class="education-content">
+        <div class="education-meta">
+          <span>{{ education.period }}</span>
+          <span>{{ education.average }}</span>
+        </div>
+        <h3>{{ education.institution }}</h3>
+        <p class="qualification">{{ education.qualification }}</p>
+        <p class="scholarship">{{ education.scholarship }}</p>
+
+        <div class="academic-results">
+          <p>Selected results</p>
+          <ul>
+            {% for highlight in education.highlights %}
+              <li>{{ highlight }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}

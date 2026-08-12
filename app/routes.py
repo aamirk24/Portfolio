@@ -2,6 +2,8 @@ from flask import Blueprint, abort, render_template
 
 from app.data.projects import (
     CAPABILITIES,
+    EDUCATION,
+    EXPERIENCE,
     FEATURED_PROJECTS,
     get_adjacent_projects,
     get_project,
@@ -17,6 +19,8 @@ def index():
     return render_template(
         "index.html",
         capabilities=CAPABILITIES,
+        education=EDUCATION,
+        experience=EXPERIENCE,
         featured_projects=FEATURED_PROJECTS,
     )
 
