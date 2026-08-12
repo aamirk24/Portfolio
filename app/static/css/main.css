@@ -630,6 +630,11 @@ h1 {
   max-width: 46rem;
 }
 
+.case-study-action {
+  gap: 0.45rem;
+  margin-top: 2rem;
+}
+
 .project-visual-large {
   aspect-ratio: 2 / 1;
   max-height: 46rem;
@@ -637,6 +642,72 @@ h1 {
 
 .project-visual-large .project-highlight {
   font-size: clamp(0.68rem, 1vw, 0.85rem);
+}
+
+.case-study-overview,
+.case-study-contribution {
+  padding-block: clamp(5rem, 10vw, 9rem);
+}
+
+.case-study-contribution {
+  background: var(--colour-surface);
+}
+
+.case-study-copy-grid {
+  display: grid;
+  gap: 2rem 4rem;
+  grid-template-columns: minmax(10rem, 0.35fr) minmax(0, 1fr);
+}
+
+.case-study-copy h2,
+.evidence-column h2 {
+  font-size: clamp(2.3rem, 5vw, 4.8rem);
+  line-height: 1.08;
+  max-width: 13ch;
+}
+
+.case-study-copy > p {
+  color: var(--colour-muted);
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  line-height: 1.65;
+  margin-top: 2rem;
+  max-width: 45rem;
+}
+
+.case-study-evidence {
+  padding-block: clamp(5rem, 10vw, 9rem);
+}
+
+.evidence-grid {
+  display: grid;
+  gap: clamp(4rem, 8vw, 8rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.evidence-list {
+  border-top: 1px solid var(--colour-line);
+  list-style: none;
+  margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+  padding: 0;
+}
+
+.evidence-list li {
+  border-bottom: 1px solid var(--colour-line);
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  padding-block: 1.5rem;
+}
+
+.evidence-list span {
+  color: var(--colour-accent);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+}
+
+.evidence-list p {
+  color: var(--colour-muted);
+  margin: 0;
 }
 
 .case-study-foundation {
@@ -827,7 +898,9 @@ h1 {
   }
 
   .project-card-link,
-  .case-study-grid {
+  .case-study-grid,
+  .case-study-copy-grid,
+  .evidence-grid {
     grid-template-columns: 1fr;
   }
 

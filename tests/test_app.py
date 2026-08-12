@@ -30,8 +30,20 @@ def test_project_detail(client):
     assert response.status_code == 200
     assert b"ScholarGraph | Aamir Khan" in response.data
     assert b"29 API endpoints" in response.data
+    assert b"What the project set out to do." in response.data
+    assert b"My role in the work." in response.data
+    assert b"32 automated tests" in response.data
+    assert b"https://github.com/aamirk24/scholargraph" in response.data
     assert b'href="/projects/nonaga"' in response.data
     assert b'href="/projects/vibecheck"' in response.data
+
+
+def test_project_without_repository_omits_repository_action(client):
+    response = client.get("/projects/repit")
+
+    assert response.status_code == 200
+    assert b"View repository" not in response.data
+    assert b"1,500 ExerciseDB records" in response.data
 
 
 def test_unknown_project_returns_not_found(client):

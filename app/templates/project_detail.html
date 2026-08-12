@@ -16,20 +16,71 @@
           </div>
           <h1>{{ project.title }}</h1>
           <p>{{ project.summary }}</p>
+          {% if project.repository_url %}
+            <a class="button button-primary case-study-action" href="{{ project.repository_url }}" target="_blank" rel="noreferrer">View repository <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a>
+          {% endif %}
         </div>
 
         {{ project_visual(project, large=True) }}
       </div>
     </header>
 
-    <section class="case-study-foundation" aria-labelledby="case-study-foundation-title">
+    <section class="case-study-overview" aria-labelledby="overview-title">
+      <div class="site-container case-study-copy-grid">
+        <p class="section-index">01 / Overview</p>
+        <div class="case-study-copy">
+          <h2 id="overview-title">What the project set out to do.</h2>
+          <p>{{ project.overview }}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-study-contribution" aria-labelledby="contribution-title">
+      <div class="site-container case-study-copy-grid">
+        <p class="section-index">02 / Contribution</p>
+        <div class="case-study-copy">
+          <h2 id="contribution-title">My role in the work.</h2>
+          <p>{{ project.contribution }}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-study-evidence" aria-labelledby="decisions-title">
+      <div class="site-container evidence-grid">
+        <div class="evidence-column">
+          <p class="section-index">03 / Decisions</p>
+          <h2 id="decisions-title">How I approached it.</h2>
+          <ol class="evidence-list">
+            {% for decision in project.decisions %}
+              <li><span>{{ "%02d" | format(loop.index) }}</span><p>{{ decision }}</p></li>
+            {% endfor %}
+          </ol>
+        </div>
+
+        <div class="evidence-column">
+          <p class="section-index">04 / Outcomes</p>
+          <h2>What the work demonstrates.</h2>
+          <ol class="evidence-list">
+            {% for outcome in project.outcomes %}
+              <li><span>{{ "%02d" | format(loop.index) }}</span><p>{{ outcome }}</p></li>
+            {% endfor %}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-study-foundation" aria-labelledby="project-facts-title">
       <div class="site-container case-study-grid">
         <div>
-          <p class="section-index">Project foundation</p>
-          <h2 id="case-study-foundation-title">The case study is being assembled around verified evidence.</h2>
+          <p class="section-index">05 / At a glance</p>
+          <h2 id="project-facts-title">The project in context.</h2>
         </div>
 
         <div class="project-facts">
+          <div class="project-fact">
+            <span>Role</span>
+            <strong>{{ project.role }}</strong>
+          </div>
           <div class="project-fact">
             <span>Selected evidence</span>
             <strong>{{ project.highlight }}</strong>
