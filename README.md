@@ -70,6 +70,18 @@ flask --app app run --debug
 
 Open [http://127.0.0.1:5000](http://127.0.0.1:5000).
 
+## Production preparation
+
+The portfolio is prepared for Cloudflare Pages without changing its Flask development workflow. A Python build step renders the homepage, case studies, discovery files, and custom error page into a static `dist/` directory, then copies the site's assets and Cloudflare response policies alongside them.
+
+```bash
+SITE_URL=https://your-domain.example python build_static.py
+```
+
+For Cloudflare Pages, use `python build_static.py` as the build command and `dist` as the output directory. `SITE_URL` is optional during previews; set it to the final public address before the production deployment so canonical links and the sitemap use that address.
+
+No Cloudflare project or live deployment has been created yet.
+
 ## Structure
 
 ```text
@@ -90,5 +102,3 @@ tests/                    Application and content-contract tests
 - [GitHub](https://github.com/aamirk24)
 - [LinkedIn](https://www.linkedin.com/in/aamirkhan05/)
 - [aamirk2405@gmail.com](mailto:aamirk2405@gmail.com)
-
-Production deployment will be configured separately.
