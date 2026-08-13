@@ -57,6 +57,9 @@ def test_homepage(client):
     assert b"js/project-universe.js" in response.data
     assert b"js/header-scroll.js" in response.data
     assert b"js/blueprint-reveal.js" in response.data
+    assert b"/static/images/favicon.png" in response.data
+    assert b'class="identity-mark"' in response.data
+    assert b"/static/images/logo.png" in response.data
 
 
 def test_project_detail(client):

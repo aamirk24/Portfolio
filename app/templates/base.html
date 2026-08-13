@@ -7,6 +7,7 @@
     <meta name="author" content="Aamir Khan">
     <meta name="robots" content="{% block robots %}index, follow{% endblock %}">
     <meta name="theme-color" content="#f4f1ea">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png" sizes="256x256">
     <link rel="canonical" href="{{ request.base_url }}">
     <meta property="og:type" content="{% block og_type %}website{% endblock %}">
     <meta property="og:site_name" content="Aamir Khan Portfolio">
@@ -31,7 +32,7 @@
       <nav class="navbar navbar-expand-md" aria-label="Primary navigation">
         <div class="site-container container-fluid">
           <a class="navbar-brand" href="{{ url_for('main.index') }}" aria-label="Aamir Khan, home">
-            <span aria-hidden="true">AK</span>
+            <img class="identity-mark" src="{{ url_for('static', filename='images/logo.png') }}" alt="">
           </a>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNavigation" aria-controls="primaryNavigation" aria-expanded="false" aria-label="Toggle navigation">

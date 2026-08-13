@@ -95,23 +95,29 @@ button:focus-visible {
 
 .navbar-brand {
   align-items: center;
-  background: var(--colour-ink);
-  border-radius: 50%;
-  color: var(--colour-canvas);
+  background: transparent;
+  color: var(--colour-ink);
   display: inline-flex;
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  height: 2.75rem;
+  height: 3rem;
   justify-content: center;
-  letter-spacing: -0.06em;
-  transition: background-color var(--transition-fast), transform var(--transition-fast);
-  width: 2.75rem;
+  padding: 0;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  width: 4rem;
+}
+
+.identity-mark {
+  height: 2.8rem;
+  object-fit: contain;
+  width: 4rem;
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .navbar-brand:hover {
-  background: var(--colour-accent);
-  color: #fff;
-  transform: rotate(-6deg);
+  transform: translateY(-2px);
+}
+
+.navbar-brand:hover .identity-mark {
+  transform: translate(1px, -1px);
 }
 
 .navbar-toggler {
