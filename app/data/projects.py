@@ -218,12 +218,12 @@ CAPABILITIES = (
             "data models, authenticated workflows, and dependable server-side logic."
         ),
         "skills": (
-            "Python",
-            "Flask",
-            "FastAPI",
-            "JavaScript",
-            "REST APIs",
-            "pytest",
+            {"name": "Python", "icon": "devicon-python-plain"},
+            {"name": "Flask", "icon": "devicon-flask-original"},
+            {"name": "FastAPI", "icon": "devicon-fastapi-plain"},
+            {"name": "JavaScript", "icon": "devicon-javascript-plain"},
+            {"name": "pytest", "icon": "devicon-pytest-plain"},
+            {"name": "REST APIs", "symbol": "</>"},
         ),
     },
     {
@@ -234,12 +234,12 @@ CAPABILITIES = (
             "data into structured, searchable, and useful application features."
         ),
         "skills": (
-            "SQL",
-            "PostgreSQL",
-            "SQLAlchemy",
-            "pgvector",
-            "pandas",
-            "Alembic",
+            {"name": "PostgreSQL", "icon": "devicon-postgresql-plain"},
+            {"name": "MySQL", "icon": "devicon-mysql-original"},
+            {"name": "SQLAlchemy", "icon": "devicon-sqlalchemy-plain"},
+            {"name": "pandas", "icon": "devicon-pandas-plain"},
+            {"name": "Docker", "icon": "devicon-docker-plain"},
+            {"name": "pgvector", "symbol": "[v]"},
         ),
     },
     {
@@ -250,12 +250,12 @@ CAPABILITIES = (
             "latency, feature design, and the product experience around their outputs."
         ),
         "skills": (
-            "scikit-learn",
-            "Semantic search",
-            "Text classification",
-            "PCA",
-            "Regression",
-            "Minimax",
+            {"name": "scikit-learn", "icon": "devicon-scikitlearn-plain"},
+            {"name": "Python", "icon": "devicon-python-plain"},
+            {"name": "Semantic search", "diagram": "semantic-search"},
+            {"name": "Text classification", "symbol": "Aa"},
+            {"name": "PCA / Regression", "diagram": "regression"},
+            {"name": "Minimax", "diagram": "minimax"},
         ),
     },
 )

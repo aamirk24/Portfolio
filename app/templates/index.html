@@ -1,64 +1,74 @@
 {% extends "base.html" %}
-{% from "components/project_visual.html" import project_visual %}
-
 {% block title %}Aamir Khan | Portfolio{% endblock %}
 
 {% block content %}
   <section class="hero" aria-labelledby="hero-title">
+    <div class="blueprint-field" data-blueprint-field aria-hidden="true">
+      <span class="blueprint-frame"></span>
+      <span class="blueprint-scan"></span>
+      <span class="blueprint-index">01 / Introduction</span>
+    </div>
     <div class="site-container hero-grid">
-      <div class="hero-intro">
-        <p class="eyebrow">Software engineering <span aria-hidden="true">·</span> Data <span aria-hidden="true">·</span> Applied AI</p>
-        <h1 id="hero-title">I build software that makes complex information useful.</h1>
-        <p class="hero-summary">First-Class Computer Science graduate building Python systems across backend engineering, data, and applied AI.</p>
+      <div class="hero-intro" data-blueprint-content>
+        <p class="eyebrow blueprint-reveal">Graduate software engineer <span aria-hidden="true">·</span> Data <span aria-hidden="true">·</span> Applied AI</p>
+        <h1 id="hero-title" aria-label="I’m Aamir Khan. I build across software engineering, data systems, and applied AI.">
+          <span class="headline-line headline-identity" aria-hidden="true"><span>I’m Aamir Khan.</span></span>
+          <span class="headline-line" aria-hidden="true"><span>I build across</span></span>
+          <span class="headline-line headline-accent headline-rotator" data-headline-rotator aria-hidden="true">
+            <span class="kinetic-word is-active">software engineering.</span>
+            <span class="kinetic-word">data systems.</span>
+            <span class="kinetic-word">applied AI.</span>
+          </span>
+        </h1>
+        <p class="hero-summary blueprint-reveal">First-Class Computer Science graduate creating tested backend systems, data-driven applications, and practical machine-learning solutions.</p>
 
-        <div class="hero-actions">
+        <div class="hero-actions blueprint-reveal">
           <a class="button button-primary" href="#work">Explore my work</a>
           <a class="button button-secondary" href="{{ url_for('static', filename='documents/Aamir_Khan_Software_Engineering_CV.pdf') }}" download="Aamir_Khan_Software_Engineering_CV.pdf">Download CV <span aria-hidden="true">↓</span></a>
           <a class="text-link" href="https://github.com/aamirk24" target="_blank" rel="noreferrer">View GitHub<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens in a new tab)</span></a>
         </div>
       </div>
 
-      <div class="hero-marker" aria-hidden="true">
-        <span class="marker-index">01</span>
-        <span class="marker-line"></span>
-        <span class="marker-copy">Based in Reading, UK</span>
-      </div>
     </div>
   </section>
 
   <section class="selected-work" id="work" aria-labelledby="work-title">
-    <div class="site-container">
-      <div class="section-heading">
+    <div class="work-stage site-container">
+      <div class="universe-heading">
         <p class="section-index">02 / Selected work</p>
-        <div>
+        <div class="universe-heading-copy">
           <h2 id="work-title">Projects built around real problems.</h2>
-          <p class="section-intro">A selection spanning backend systems, real-time applications, data engineering, and applied machine learning.</p>
+          <p class="section-intro">Explore six systems spanning software engineering, data, and applied AI.</p>
         </div>
+        <p class="universe-heading-hint" aria-hidden="true">Move through the field<br>Focus a node to begin</p>
       </div>
 
-      <div class="project-list">
-        {% for project in featured_projects %}
-          <article class="project-card">
-            <a class="project-card-link" href="{{ url_for('main.project_detail', slug=project.slug) }}" aria-label="View {{ project.title }} case study">
-              {{ project_visual(project, "%02d" | format(loop.index)) }}
-
-              <div class="project-content">
-                <div class="project-meta">
-                  <span>{{ project.category }}</span>
-                  <span>{{ project.year }}</span>
-                </div>
-                <h3>{{ project.title }}</h3>
-                <p>{{ project.summary }}</p>
-                <ul class="technology-list" aria-label="Technologies used">
-                  {% for technology in project.technologies %}
-                    <li>{{ technology }}</li>
-                  {% endfor %}
-                </ul>
-                <span class="project-cta">View case study <span aria-hidden="true">↗</span></span>
-              </div>
+      <div class="project-universe" data-project-universe aria-label="Interactive project universe">
+        <canvas data-universe-canvas aria-hidden="true"></canvas>
+        <div class="universe-nodes">
+          {% for project in featured_projects %}
+            <a class="universe-node"
+               href="{{ url_for('main.project_detail', slug=project.slug) }}"
+               data-universe-node
+               data-index="{{ loop.index0 }}"
+               aria-label="Open {{ project.title }} case study">
+              <span class="universe-node-identity">
+                <span>{{ "%02d" | format(loop.index) }}</span>
+                <strong>{{ project.title }}</strong>
+              </span>
+              <span class="universe-node-dossier">
+                <span class="dossier-meta"><span>{{ project.category }}</span><span>{{ project.year }}</span></span>
+                <strong class="dossier-title">{{ project.title }}</strong>
+                <span class="dossier-summary">{{ project.summary }}</span>
+                <span class="dossier-technologies">
+                  {% for technology in project.technologies[:3] %}<span>{{ technology }}</span>{% endfor %}
+                </span>
+                <span class="dossier-footer"><span>{{ project.highlight }}</span><span>Open case study&nbsp; ↗</span></span>
+              </span>
             </a>
-          </article>
-        {% endfor %}
+          {% endfor %}
+        </div>
+        <p class="universe-instruction" aria-hidden="true">Move to explore <span>·</span> Focus a node <span>·</span> Select to open</p>
       </div>
     </div>
   </section>
@@ -97,19 +107,37 @@
     <div class="site-container">
       <div class="capabilities-heading">
         <p class="section-index">04 / Capabilities</p>
-        <h2 id="capabilities-title">Three connected ways I contribute.</h2>
+        <div>
+          <h2 id="capabilities-title">Three disciplines.<br>One connected practice.</h2>
+          <p>From application logic to structured data and intelligent behaviour.</p>
+        </div>
       </div>
 
       <div class="capability-list">
         {% for capability in capabilities %}
-          <article class="capability-item">
-            <span class="capability-number">{{ capability.number }}</span>
+          <article class="capability-item" tabindex="0">
+            <div class="capability-topline">
+              <span class="capability-number">{{ capability.number }}</span>
+            </div>
             <div class="capability-content">
               <h3>{{ capability.title }}</h3>
               <p>{{ capability.description }}</p>
-              <ul aria-label="{{ capability.title }} skills">
+              <ul class="technology-grid" aria-label="{{ capability.title }} technologies and methods">
                 {% for skill in capability.skills %}
-                  <li>{{ skill }}</li>
+                  <li>
+                    <span class="technology-mark" aria-hidden="true">
+                      {% if skill.icon %}
+                        <i class="{{ skill.icon }}"></i>
+                      {% elif skill.diagram == "semantic-search" %}
+                        <svg viewBox="0 0 48 48" focusable="false"><circle cx="20" cy="20" r="10"></circle><path d="m27 27 9 9M15 20h10M20 15v10"></path><circle cx="9" cy="11" r="2"></circle><circle cx="32" cy="10" r="2"></circle><path d="m11 12 5 4m14-4-5 4"></path></svg>
+                      {% elif skill.diagram == "regression" %}
+                        <svg viewBox="0 0 48 48" focusable="false"><path d="M8 7v33h34"></path><circle cx="14" cy="31" r="2"></circle><circle cx="20" cy="27" r="2"></circle><circle cx="27" cy="25" r="2"></circle><circle cx="34" cy="17" r="2"></circle><circle cx="39" cy="14" r="2"></circle><path class="diagram-accent" d="m11 34 30-23"></path></svg>
+                      {% elif skill.diagram == "minimax" %}
+                        <svg viewBox="0 0 48 48" focusable="false"><circle cx="24" cy="8" r="3"></circle><circle cx="14" cy="22" r="3"></circle><circle cx="34" cy="22" r="3"></circle><circle cx="8" cy="38" r="3"></circle><circle cx="19" cy="38" r="3"></circle><circle cx="29" cy="38" r="3"></circle><circle cx="40" cy="38" r="3"></circle><path d="m22 11-6 8m10-8 6 8M13 25l-4 10m7-10 2 10m15-10-3 10m6-10 3 10"></path></svg>
+                      {% else %}<b>{{ skill.symbol }}</b>{% endif %}
+                    </span>
+                    <span>{{ skill.name }}</span>
+                  </li>
                 {% endfor %}
               </ul>
             </div>
@@ -176,4 +204,8 @@
       </div>
     </div>
   </section>
+{% endblock %}
+
+{% block scripts %}
+  <script type="module" src="{{ url_for('static', filename='js/project-universe.js') }}"></script>
 {% endblock %}
