@@ -1818,6 +1818,15 @@ h1 {
     margin-bottom: 0.6em;
   }
 
+  h1 {
+    font-size: clamp(2rem, 8.2vw, 2.65rem);
+  }
+
+  .case-study-heading h1 {
+    font-size: clamp(2.5rem, 12vw, 3.75rem);
+    overflow-wrap: anywhere;
+  }
+
   .section-heading,
   .universe-heading,
   .capabilities-heading,
@@ -1988,6 +1997,74 @@ h1 {
 
   .footer-links {
     justify-content: flex-start;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .work-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .universe-heading {
+    border-bottom: 1px solid rgba(244, 241, 234, 0.18);
+    border-right: 0;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: minmax(9rem, 0.3fr) minmax(0, 1fr) auto;
+    padding: 2.5rem var(--site-gutter);
+  }
+
+  .universe-heading .section-index,
+  .universe-heading .section-intro {
+    margin: 0;
+  }
+
+  .universe-heading-hint {
+    align-self: end;
+  }
+
+  .project-universe {
+    height: 52rem;
+  }
+
+  .capability-list {
+    grid-template-columns: 1fr;
+  }
+
+  .capability-list::before {
+    display: none;
+  }
+
+  .capability-item {
+    min-height: 0;
+    padding: 2.25rem;
+  }
+
+  .capability-item + .capability-item {
+    border-left: 0;
+    border-top: 1px solid var(--colour-line);
+  }
+
+  .capability-content {
+    display: grid;
+    gap: 1rem 3rem;
+    grid-template-columns: minmax(13rem, 0.65fr) minmax(0, 1fr);
+  }
+
+  .capability-content h3 {
+    margin-top: 2rem;
+    max-width: 9ch;
+  }
+
+  .capability-content > p {
+    grid-column: 1;
+  }
+
+  .technology-grid {
+    align-self: end;
+    grid-column: 2;
+    grid-row: 1 / 3;
+    margin-top: 2rem;
   }
 }
 
