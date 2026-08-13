@@ -1,4 +1,4 @@
-# Aamir Khan — Portfolio
+# Aamir Khan - Portfolio
 
 A recruiter-facing portfolio presenting my work across software engineering, data systems, and applied AI.
 
