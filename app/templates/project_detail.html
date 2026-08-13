@@ -2,6 +2,12 @@
 {% from "components/project_visual.html" import project_visual %}
 
 {% block title %}{{ project.title }} | Aamir Khan{% endblock %}
+{% block description %}{{ project.summary }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block og_title %}{{ project.title }} | Aamir Khan{% endblock %}
+{% block og_description %}{{ project.summary }}{% endblock %}
+{% block twitter_title %}{{ project.title }} | Aamir Khan{% endblock %}
+{% block twitter_description %}{{ project.summary }}{% endblock %}
 
 {% block content %}
   <article class="case-study">

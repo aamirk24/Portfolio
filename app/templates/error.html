@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ error_code }} | Aamir Khan{% endblock %}
+{% block description %}{{ error_title }} Return to Aamir Khan’s portfolio.{% endblock %}
+{% block robots %}noindex, follow{% endblock %}
+{% block og_title %}{{ error_code }} | Aamir Khan{% endblock %}
+{% block og_description %}{{ error_title }} Return to Aamir Khan’s portfolio.{% endblock %}
+{% block twitter_title %}{{ error_code }} | Aamir Khan{% endblock %}
+{% block twitter_description %}{{ error_title }} Return to Aamir Khan’s portfolio.{% endblock %}
+
+{% block content %}
+  <section class="error-page" aria-labelledby="error-title">
+    <div class="site-container error-grid">
+      <p class="error-code" aria-hidden="true">{{ error_code }}</p>
+      <div class="error-copy">
+        <p class="section-index">System response / {{ error_code }}</p>
+        <h1 id="error-title">{{ error_title }}</h1>
+        <p>{{ error_message }}</p>
+        <a class="button button-primary" href="{{ url_for('main.index') }}">Return home</a>
+      </div>
+    </div>
+  </section>
+{% endblock %}

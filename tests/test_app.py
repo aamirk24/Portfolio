@@ -85,6 +85,45 @@ def test_unknown_project_returns_not_found(client):
     response = client.get("/projects/unknown-project")
 
     assert response.status_code == 404
+    assert b"Page not found." in response.data
+    assert b"Return home" in response.data
+
+
+def test_pages_include_contextual_metadata(client):
+    homepage = client.get("/")
+    project = client.get("/projects/scholargraph")
+
+    assert b'<link rel="canonical" href="http://localhost/">' in homepage.data
+    assert b'<meta property="og:type" content="website">' in homepage.data
+    assert b'<meta name="twitter:card" content="summary">' in homepage.data
+    assert b'<meta property="og:type" content="article">' in project.data
+    assert b"A research platform that connects academic metadata" in project.data
+
+
+def test_security_and_cache_headers(client):
+    page = client.get("/")
+    asset = client.get("/static/css/main.css")
+
+    assert "default-src 'self'" in page.headers["Content-Security-Policy"]
+    assert page.headers["X-Content-Type-Options"] == "nosniff"
+    assert page.headers["X-Frame-Options"] == "DENY"
+    assert page.headers["Referrer-Policy"] == "strict-origin-when-cross-origin"
+    assert page.headers["Cache-Control"] == "no-cache"
+    assert asset.headers["Cache-Control"] == "public, max-age=3600, must-revalidate"
+
+
+def test_search_engine_routes(client):
+    robots = client.get("/robots.txt")
+    sitemap = client.get("/sitemap.xml")
+
+    assert robots.status_code == 200
+    assert robots.mimetype == "text/plain"
+    assert b"Allow: /" in robots.data
+    assert b"Sitemap: http://localhost/sitemap.xml" in robots.data
+    assert sitemap.status_code == 200
+    assert sitemap.mimetype == "application/xml"
+    assert sitemap.data.count(b"<url>") == 7
+    assert b"http://localhost/projects/scholargraph" in sitemap.data
 
 
 def test_cv_download_is_available(client):
@@ -103,7 +142,7 @@ def test_project_universe_script_is_available(client):
     assert response.status_code == 200
     assert response.mimetype in {"application/javascript", "text/javascript"}
     assert b"prefers-reduced-motion" in response.data
-    assert b"three.module.js" in response.data
+    assert b"three.module.min.js" in response.data
     assert b"THREE.WebGLRenderer" in response.data
     assert b"Raycaster" in response.data
 

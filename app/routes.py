@@ -1,4 +1,4 @@
-from flask import Blueprint, abort, render_template
+from flask import Blueprint, Response, abort, render_template, url_for
 
 from app.data.projects import (
     CAPABILITIES,
@@ -40,4 +40,23 @@ def project_detail(slug):
         project=project,
         previous_project=previous_project,
         next_project=next_project,
+    )
+
+
+@main.get("/robots.txt")
+def robots():
+    """Expose crawler guidance with the environment's canonical sitemap URL."""
+    sitemap_url = url_for("main.sitemap", _external=True)
+    return Response(
+        f"User-agent: *\nAllow: /\nSitemap: {sitemap_url}\n",
+        mimetype="text/plain",
+    )
+
+
+@main.get("/sitemap.xml")
+def sitemap():
+    """List the public portfolio routes for search engines."""
+    return Response(
+        render_template("sitemap.xml", featured_projects=FEATURED_PROJECTS),
+        mimetype="application/xml",
     )

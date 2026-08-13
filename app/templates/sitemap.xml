@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ url_for('main.index', _external=True) }}</loc>
+  </url>
+  {% for project in featured_projects %}
+    <url>
+      <loc>{{ url_for('main.project_detail', slug=project.slug, _external=True) }}</loc>
+    </url>
+  {% endfor %}
+</urlset>
