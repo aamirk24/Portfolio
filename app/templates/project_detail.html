@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% from "components/project_visual.html" import project_visual %}
 
 {% block title %}{{ project.title }} | Aamir Khan{% endblock %}
 {% block description %}{{ project.summary }}{% endblock %}
@@ -89,8 +88,6 @@
               </figure>
             {% endif %}
           </div>
-        {% else %}
-          {{ project_visual(project, large=True) }}
         {% endif %}
       </div>
     </header>
