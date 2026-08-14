@@ -13,6 +13,12 @@ FEATURED_PROJECTS = (
         "visual": "network",
         "role": "Individual project",
         "repository_url": "https://github.com/aamirk24/scholargraph",
+        "hero_image": "images/projects/scholargraph-semantic-search.png",
+        "hero_image_alt": "ScholarGraph semantic-search API response with ranked academic papers",
+        "hero_image_caption": "Semantic retrieval results ranked against a natural-language research query.",
+        "secondary_image": "images/projects/scholargraph-api-overview.png",
+        "secondary_image_alt": "ScholarGraph interactive API documentation showing its endpoint groups",
+        "secondary_image_caption": "The documented API surface across authentication, crawling, papers, annotations, and analytics.",
         "overview": (
             "Academic search often separates paper metadata, citation relationships, "
             "and semantic similarity. ScholarGraph brings those signals together in "
@@ -48,6 +54,12 @@ FEATURED_PROJECTS = (
         "visual": "board",
         "role": "Individual dissertation",
         "repository_url": "https://github.com/aamirk24/Nonaga",
+        "hero_image": "images/projects/nonaga-gameplay.png",
+        "hero_image_alt": "Nonaga strategy board during a game against the computer",
+        "hero_image_caption": "A live match against the minimax opponent, with legal moves surfaced directly on the board.",
+        "secondary_image": "images/projects/nonaga-game-modes.png",
+        "secondary_image_alt": "Nonaga mode selection for local, computer, and online multiplayer",
+        "secondary_image_caption": "One rules engine presented through local, computer, and real-time online play.",
         "overview": (
             "Nonaga combines two distinct engineering challenges: creating a useful "
             "computer opponent for a compact strategy game and keeping multiplayer "
@@ -83,6 +95,12 @@ FEATURED_PROJECTS = (
         "visual": "rings",
         "role": "Individual project",
         "repository_url": None,
+        "hero_image": "images/projects/repit-landing.png",
+        "hero_image_alt": "RepIT landing page with a fitness-focused hero and sign-up action",
+        "hero_image_caption": "The public entry point establishes RepIT as a focused workout-planning product.",
+        "secondary_image": "images/projects/repit-dashboard.png",
+        "secondary_image_alt": "RepIT welcome-back dashboard showing workout history and saved routines",
+        "secondary_image_caption": "Workout history and reusable routines brought together in the signed-in dashboard.",
         "overview": (
             "RepIT was designed to make workout planning and progress tracking part of "
             "one continuous flow, from saving routines to logging sets during a live "
@@ -106,7 +124,7 @@ FEATURED_PROJECTS = (
     },
     {
         "slug": "auction",
-        "title": "Auction Website",
+        "title": "Flip",
         "category": "Team software project",
         "year": "2025",
         "summary": (
@@ -118,6 +136,12 @@ FEATURED_PROJECTS = (
         "visual": "pulse",
         "role": "Team of six",
         "repository_url": None,
+        "hero_image": "images/projects/flip-landing.png",
+        "hero_image_alt": "Flip fashion-auction landing page",
+        "hero_image_caption": "Flip’s fashion-led landing experience introduces the auction platform’s visual identity.",
+        "secondary_image": "images/projects/flip-product-bidding.png",
+        "secondary_image_alt": "Flip product page showing live auction details and the bidding interface",
+        "secondary_image_caption": "The product workflow combines live pricing, countdown state, watchlists, and bid entry.",
         "overview": (
             "The project brought listings, specialist roles, bidding, payments, and "
             "notifications into a single auction workflow built collaboratively by a "
@@ -153,6 +177,9 @@ FEATURED_PROJECTS = (
         "visual": "frames",
         "role": "Individual project",
         "repository_url": None,
+        "hero_image": "images/projects/movie-model-comparison.png",
+        "hero_image_alt": "Comparison of four movie genre classification models and their measured accuracy",
+        "hero_image_caption": "Ten-fold cross-validation results across four classifiers trained on 2,500 movie overviews.",
         "overview": (
             "This study explored how effectively short movie descriptions can predict "
             "genre when the task is framed as classification across five distinct classes."
@@ -187,6 +214,12 @@ FEATURED_PROJECTS = (
         "visual": "wave",
         "role": "Team of two",
         "repository_url": "https://github.com/aamirk24/vibe-check-final",
+        "hero_image": "images/projects/vibecheck-results.png",
+        "hero_image_alt": "VibeCheck mood-classification result with confidence score and playlist recommendation",
+        "hero_image_caption": "A detected mood, confidence score, and music recommendation presented as one result flow.",
+        "secondary_image": "images/projects/vibecheck-playlist.png",
+        "secondary_image_alt": "VibeCheck generated Spotify playlist and user feedback controls",
+        "secondary_image_caption": "The generated playlist remains actionable through embedded playback and feedback controls.",
         "overview": (
             "VibeCheck explored a playful question during a hackathon: could a predicted "
             "facial emotion become a useful starting point for music discovery?"

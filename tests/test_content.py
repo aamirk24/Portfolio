@@ -41,6 +41,12 @@ def test_project_content_contract_is_complete_and_unique():
         "visual",
         "role",
         "repository_url",
+        "hero_image",
+        "hero_image_alt",
+        "hero_image_caption",
+        "secondary_image",
+        "secondary_image_alt",
+        "secondary_image_caption",
         "overview",
         "contribution",
         "decisions",
@@ -52,7 +58,23 @@ def test_project_content_contract_is_complete_and_unique():
     assert len(slugs) == len(set(slugs))
 
     for project in FEATURED_PROJECTS:
-        assert required_fields == project.keys()
+        assert required_fields.issuperset(project.keys())
+        assert {
+            "slug",
+            "title",
+            "category",
+            "year",
+            "summary",
+            "highlight",
+            "technologies",
+            "visual",
+            "role",
+            "repository_url",
+            "overview",
+            "contribution",
+            "decisions",
+            "outcomes",
+        }.issubset(project.keys())
         assert project["technologies"]
         assert project["decisions"]
         assert project["outcomes"]

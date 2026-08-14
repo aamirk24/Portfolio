@@ -25,7 +25,7 @@ def index():
     )
 
 
-@main.get("/projects/<slug>")
+@main.get("/projects/<slug>", strict_slashes=False)
 def project_detail(slug):
     """Render a project case study from its structured content."""
     project = get_project(slug)
@@ -34,10 +34,17 @@ def project_detail(slug):
         abort(404)
 
     previous_project, next_project = get_adjacent_projects(slug)
+    project_number = next(
+        index
+        for index, featured_project in enumerate(FEATURED_PROJECTS, start=1)
+        if featured_project["slug"] == slug
+    )
 
     return render_template(
         "project_detail.html",
         project=project,
+        project_number=project_number,
+        project_total=len(FEATURED_PROJECTS),
         previous_project=previous_project,
         next_project=next_project,
     )

@@ -13,49 +13,125 @@
   <article class="case-study">
     <header class="case-study-header">
       <div class="site-container">
-        <a class="back-link" href="{{ url_for('main.index') }}#work"><span aria-hidden="true">←</span> Selected work</a>
-
-        <div class="case-study-heading">
-          <div class="project-meta case-study-meta">
-            <span>{{ project.category }}</span>
-            <span>{{ project.year }}</span>
-          </div>
-          <h1>{{ project.title }}</h1>
-          <p>{{ project.summary }}</p>
-          {% if project.repository_url %}
-            <a class="button button-primary case-study-action" href="{{ project.repository_url }}" target="_blank" rel="noreferrer">View repository <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a>
-          {% endif %}
+        <div class="case-study-utility">
+          <a class="back-link" href="{{ url_for('main.index') }}#work"><span aria-hidden="true">←</span> Selected work</a>
+          <p>Case study {{ "%02d" | format(project_number) }} / {{ "%02d" | format(project_total) }}</p>
         </div>
 
-        {{ project_visual(project, large=True) }}
+        <div class="case-study-hero-grid">
+          <div class="case-study-heading">
+            <div class="project-meta case-study-meta">
+              <span>{{ project.category }}</span>
+              <span>{{ project.year }}</span>
+            </div>
+            <h1>{{ project.title }}</h1>
+            <p>{{ project.summary }}</p>
+            <div class="case-study-actions">
+              <a class="button button-primary" href="#brief">Read the case study <span aria-hidden="true">↓</span></a>
+              {% if project.repository_url %}
+                <a class="case-study-repository" href="{{ project.repository_url }}" target="_blank" rel="noreferrer">View repository <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a>
+              {% endif %}
+            </div>
+          </div>
+
+          <aside class="case-study-snapshot" aria-label="Project summary">
+            <p class="snapshot-label">Project snapshot</p>
+            <dl>
+              <div>
+                <dt>Role</dt>
+                <dd>{{ project.role }}</dd>
+              </div>
+              <div>
+                <dt>Selected evidence</dt>
+                <dd>{{ project.highlight }}</dd>
+              </div>
+              <div>
+                <dt>Core technologies</dt>
+                <dd>
+                  <ul>
+                    {% for technology in project.technologies %}
+                      <li>{{ technology }}</li>
+                    {% endfor %}
+                  </ul>
+                </dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+
+        {% if project.hero_image %}
+          <div class="case-study-gallery{% if not project.secondary_image %} case-study-gallery-single{% endif %}">
+            <figure class="case-study-media case-study-media-hero{% if project.slug == 'scholargraph' or project.slug == 'vibecheck' %} case-study-media-tall{% endif %}">
+              <div class="case-study-media-frame">
+                <div class="case-study-media-bar" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                  <p>{{ project.title }} / primary view</p>
+                </div>
+                <div class="case-study-media-canvas">
+                  <img src="{{ url_for('static', filename=project.hero_image) }}" alt="{{ project.hero_image_alt }}">
+                </div>
+              </div>
+              {% if project.hero_image_caption %}<figcaption><span>01</span>{{ project.hero_image_caption }}</figcaption>{% endif %}
+            </figure>
+
+            {% if project.secondary_image %}
+              <figure class="case-study-media case-study-media-secondary{% if project.slug == 'scholargraph' or project.slug == 'vibecheck' %} case-study-media-tall{% endif %}">
+                <div class="case-study-media-frame">
+                  <div class="case-study-media-bar" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                    <p>{{ project.title }} / supporting view</p>
+                  </div>
+                  <div class="case-study-media-canvas">
+                    <img src="{{ url_for('static', filename=project.secondary_image) }}" alt="{{ project.secondary_image_alt }}" loading="lazy">
+                  </div>
+                </div>
+                {% if project.secondary_image_caption %}<figcaption><span>02</span>{{ project.secondary_image_caption }}</figcaption>{% endif %}
+              </figure>
+            {% endif %}
+          </div>
+        {% else %}
+          {{ project_visual(project, large=True) }}
+        {% endif %}
       </div>
     </header>
 
-    <section class="case-study-overview" aria-labelledby="overview-title">
-      <div class="site-container case-study-copy-grid">
-        <p class="section-index">01 / Overview</p>
-        <div class="case-study-copy">
-          <h2 id="overview-title">What the project set out to do.</h2>
-          <p>{{ project.overview }}</p>
+    <nav class="case-study-index" aria-label="Case study sections">
+      <div class="site-container">
+        <p>In this case study</p>
+        <ol>
+          <li><a href="#brief"><span>01</span> The brief</a></li>
+          <li><a href="#approach"><span>02</span> Approach</a></li>
+          <li><a href="#outcomes"><span>03</span> Outcomes</a></li>
+        </ol>
+      </div>
+    </nav>
+
+    <section class="case-study-brief" id="brief" aria-labelledby="brief-title">
+      <div class="site-container case-study-chapter">
+        <div class="chapter-heading">
+          <p class="section-index">01 / The brief</p>
+          <h2 id="brief-title">The problem and my part in solving it.</h2>
+        </div>
+        <div class="brief-copy">
+          <div>
+            <h3>Project premise</h3>
+            <p>{{ project.overview }}</p>
+          </div>
+          <div>
+            <h3>My contribution</h3>
+            <p>{{ project.contribution }}</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="case-study-contribution" aria-labelledby="contribution-title">
-      <div class="site-container case-study-copy-grid">
-        <p class="section-index">02 / Contribution</p>
-        <div class="case-study-copy">
-          <h2 id="contribution-title">My role in the work.</h2>
-          <p>{{ project.contribution }}</p>
+    <section class="case-study-evidence">
+      <div class="site-container case-study-chapter">
+        <div class="chapter-heading">
+          <p class="section-index">02 / Approach</p>
+          <h2 id="approach">Decisions that shaped the work.</h2>
         </div>
-      </div>
-    </section>
-
-    <section class="case-study-evidence" aria-labelledby="decisions-title">
-      <div class="site-container evidence-grid">
-        <div class="evidence-column">
-          <p class="section-index">03 / Decisions</p>
-          <h2 id="decisions-title">How I approached it.</h2>
+        <div class="evidence-column" aria-labelledby="approach">
           <ol class="evidence-list">
             {% for decision in project.decisions %}
               <li><span>{{ "%02d" | format(loop.index) }}</span><p>{{ decision }}</p></li>
@@ -63,42 +139,16 @@
           </ol>
         </div>
 
-        <div class="evidence-column">
-          <p class="section-index">04 / Outcomes</p>
-          <h2>What the work demonstrates.</h2>
-          <ol class="evidence-list">
+        <div class="chapter-heading">
+          <p class="section-index">03 / Outcomes</p>
+          <h2 id="outcomes">What the work demonstrates.</h2>
+        </div>
+        <div class="evidence-column evidence-column-outcomes" aria-labelledby="outcomes">
+          <ol class="evidence-list outcome-list">
             {% for outcome in project.outcomes %}
               <li><span>{{ "%02d" | format(loop.index) }}</span><p>{{ outcome }}</p></li>
             {% endfor %}
           </ol>
-        </div>
-      </div>
-    </section>
-
-    <section class="case-study-foundation" aria-labelledby="project-facts-title">
-      <div class="site-container case-study-grid">
-        <div>
-          <p class="section-index">05 / At a glance</p>
-          <h2 id="project-facts-title">The project in context.</h2>
-        </div>
-
-        <div class="project-facts">
-          <div class="project-fact">
-            <span>Role</span>
-            <strong>{{ project.role }}</strong>
-          </div>
-          <div class="project-fact">
-            <span>Selected evidence</span>
-            <strong>{{ project.highlight }}</strong>
-          </div>
-          <div class="project-fact">
-            <span>Core technologies</span>
-            <ul>
-              {% for technology in project.technologies %}
-                <li>{{ technology }}</li>
-              {% endfor %}
-            </ul>
-          </div>
         </div>
       </div>
     </section>

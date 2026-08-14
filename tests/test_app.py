@@ -26,7 +26,7 @@ def test_homepage(client):
     assert b"ScholarGraph" in response.data
     assert b"Nonaga" in response.data
     assert b"RepIT" in response.data
-    assert b"Auction Website" in response.data
+    assert b"Flip" in response.data
     assert b"Movie Genre Classification" in response.data
     assert b"VibeCheck" in response.data
     assert b"Curious across disciplines. Grounded in engineering." in response.data
@@ -68,8 +68,10 @@ def test_project_detail(client):
     assert response.status_code == 200
     assert b"ScholarGraph | Aamir Khan" in response.data
     assert b"29 API endpoints" in response.data
-    assert b"What the project set out to do." in response.data
-    assert b"My role in the work." in response.data
+    assert b"Project snapshot" in response.data
+    assert b"In this case study" in response.data
+    assert b"The problem and my part in solving it." in response.data
+    assert b'href="#approach"' in response.data
     assert b"32 automated tests" in response.data
     assert b"https://github.com/aamirk24/scholargraph" in response.data
     assert b'href="/projects/nonaga"' in response.data
@@ -82,6 +84,52 @@ def test_project_without_repository_omits_repository_action(client):
     assert response.status_code == 200
     assert b"View repository" not in response.data
     assert b"1,500 ExerciseDB records" in response.data
+    assert b"images/projects/repit-landing.png" in response.data
+    assert b"images/projects/repit-dashboard.png" in response.data
+
+
+def test_flip_uses_product_name_and_case_study_images(client):
+    response = client.get("/projects/auction")
+
+    assert response.status_code == 200
+    assert b"Flip | Aamir Khan" in response.data
+    assert b"Auction Website" not in response.data
+    assert b"images/projects/flip-landing.png" in response.data
+    assert b"images/projects/flip-product-bidding.png" in response.data
+
+
+def test_remaining_case_studies_use_reviewed_project_media(client):
+    expected_media = {
+        "scholargraph": (
+            b"images/projects/scholargraph-semantic-search.png",
+            b"images/projects/scholargraph-api-overview.png",
+        ),
+        "nonaga": (
+            b"images/projects/nonaga-gameplay.png",
+            b"images/projects/nonaga-game-modes.png",
+        ),
+        "movie-genre-classification": (
+            b"images/projects/movie-model-comparison.png",
+        ),
+        "vibecheck": (
+            b"images/projects/vibecheck-results.png",
+            b"images/projects/vibecheck-playlist.png",
+        ),
+    }
+
+    for slug, media_paths in expected_media.items():
+        response = client.get(f"/projects/{slug}")
+
+        assert response.status_code == 200
+        for media_path in media_paths:
+            assert media_path in response.data
+
+
+def test_project_detail_accepts_trailing_slash(client):
+    response = client.get("/projects/scholargraph/")
+
+    assert response.status_code == 200
+    assert b"ScholarGraph | Aamir Khan" in response.data
 
 
 def test_unknown_project_returns_not_found(client):
