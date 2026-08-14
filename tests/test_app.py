@@ -89,7 +89,7 @@ def test_project_without_repository_omits_repository_action(client):
 
 
 def test_flip_uses_product_name_and_case_study_images(client):
-    response = client.get("/projects/auction")
+    response = client.get("/projects/flip")
 
     assert response.status_code == 200
     assert b"Flip | Aamir Khan" in response.data

@@ -123,7 +123,7 @@ FEATURED_PROJECTS = (
         ),
     },
     {
-        "slug": "auction",
+        "slug": "flip",
         "title": "Flip",
         "category": "Team software project",
         "year": "2025",
