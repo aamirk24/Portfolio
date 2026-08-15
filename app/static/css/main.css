@@ -121,10 +121,20 @@ button:focus-visible {
 }
 
 .navbar-toggler {
+  align-items: center;
   border: 1px solid var(--colour-line);
   border-radius: 999px;
   box-shadow: none !important;
+  display: inline-flex;
+  justify-content: center;
+  line-height: 1;
+  min-height: 2.75rem;
   padding: 0.55rem 0.9rem;
+}
+
+.menu-label {
+  display: block;
+  line-height: 1;
 }
 
 .menu-label,
@@ -411,6 +421,15 @@ h1 {
   flex-wrap: wrap;
   gap: 1.5rem 2rem;
   margin-top: clamp(5rem, 10vh, 8rem);
+}
+
+.external-arrow {
+  display: inline-block;
+  font-family: Arial, sans-serif;
+  font-size: 0.95em;
+  line-height: 1;
+  margin-left: 0.3em;
+  transform: translateY(-0.08em);
 }
 
 @media (min-width: 768px) {
@@ -1757,6 +1776,11 @@ h1 {
     padding-block: 0.75rem 1.25rem;
   }
 
+  .navbar-toggler {
+    min-width: 5.35rem;
+    padding: 0.75rem 1rem;
+  }
+
   .nav-link,
   .nav-link-contact {
     display: inline-block;
@@ -1769,13 +1793,12 @@ h1 {
 
   .hero-grid {
     grid-template-columns: 1fr;
-    min-height: calc(100svh - 4.75rem);
-    padding-bottom: 2.5rem;
-    padding-top: clamp(4rem, 12vh, 6.5rem);
+    min-height: auto;
+    padding: 6.25rem 2.5rem 4rem;
   }
 
   .blueprint-frame {
-    inset: 1.5rem 1.25rem;
+    inset: 1.5rem 1.25rem 2rem;
   }
 
   .blueprint-index {
@@ -1784,11 +1807,52 @@ h1 {
   }
 
   .headline-identity {
-    margin-bottom: 0.6em;
+    margin-bottom: 0.7em;
   }
 
   h1 {
-    font-size: clamp(2rem, 8.2vw, 2.65rem);
+    font-size: clamp(2.15rem, 9.5vw, 2.8rem);
+    line-height: 1.03;
+  }
+
+  .eyebrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.45rem;
+    line-height: 1.55;
+    margin-bottom: 2.25rem;
+  }
+
+  .eyebrow span {
+    padding-inline: 0;
+  }
+
+  .hero-summary {
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-top: 2.5rem;
+  }
+
+  .hero-actions {
+    align-items: stretch;
+    display: grid;
+    gap: 0.85rem;
+    grid-template-columns: 1fr;
+    margin-top: 3rem;
+  }
+
+  .hero-actions .button {
+    min-height: 3.5rem;
+    width: 100%;
+  }
+
+  .hero-actions .text-link {
+    justify-self: start;
+    margin-top: 0.45rem;
+  }
+
+  .kinetic-word {
+    white-space: normal;
   }
 
   .case-study-heading h1 {
@@ -1927,13 +1991,13 @@ h1 {
   }
 
   .project-universe {
-    height: 54rem;
-    min-height: 54rem;
+    height: 58rem;
+    min-height: 58rem;
   }
 
   .universe-node {
     height: 2.8rem;
-    width: 7.5rem;
+    width: 8.25rem;
   }
 
   .universe-node-identity {
@@ -1942,7 +2006,25 @@ h1 {
   }
 
   .universe-node-identity strong {
-    font-size: 0.58rem;
+    font-size: 0.62rem;
+  }
+
+  .universe-node::before {
+    left: -1rem;
+    width: 1rem;
+  }
+
+  .universe-node.is-left::before {
+    left: auto;
+    right: -1rem;
+  }
+
+  .universe-node {
+    transform: translate(1rem, -50%);
+  }
+
+  .universe-node.is-left {
+    transform: translate(calc(-100% - 1rem), -50%);
   }
 
   .universe-node:hover,

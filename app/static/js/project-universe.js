@@ -156,6 +156,7 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.m
   const updateLabels = () => {
     const width = universe.clientWidth;
     const height = universe.clientHeight;
+    const isMobile = width < 600;
 
     satellites.forEach((satellite, index) => {
       const projected = satellite.group.getWorldPosition(new THREE.Vector3()).project(camera);
@@ -163,15 +164,17 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.m
       const panelWidth = label.offsetWidth;
       const panelHeight = label.offsetHeight;
       const bottomClearance = index === activeIndex ? 112 : 34;
-      const forceRight = index === 2 || index === 5;
-      const placeLeft = projected.x > 0.32 && !forceRight;
+      const forceRight = !isMobile && (index === 2 || index === 5);
+      const placeLeft = projected.x > (isMobile ? 0 : 0.32) && !forceRight;
       label.classList.toggle("is-left", placeLeft);
 
       let x = (projected.x * 0.5 + 0.5) * width;
       let y = (-projected.y * 0.5 + 0.5) * height;
+      const labelGap = isMobile ? 22 : 34;
+      const edgeGap = isMobile ? 18 : 28;
       x = placeLeft
-        ? THREE.MathUtils.clamp(x, panelWidth + 34, width - 28)
-        : THREE.MathUtils.clamp(x, 28, width - panelWidth - 34);
+        ? THREE.MathUtils.clamp(x, panelWidth + labelGap, width - edgeGap)
+        : THREE.MathUtils.clamp(x, edgeGap, width - panelWidth - labelGap);
       y = THREE.MathUtils.clamp(
         y,
         panelHeight / 2 + 24,
