@@ -93,12 +93,12 @@ FEATURED_PROJECTS = (
         "role": "Individual project",
         "repository_url": "https://github.com/aamirk24/RepIT",
         "live_url": "https://repit-inq2.onrender.com/",
-        "hero_image": "images/projects/repit-landing.png",
-        "hero_image_alt": "RepIT landing page introducing its strength-training workflow and dashboard",
-        "hero_image_caption": "The public product entry point connects planning, live training, and progress in one workflow.",
-        "secondary_image": "images/projects/repit-dashboard.png",
-        "secondary_image_alt": "RepIT dashboard showing training statistics, recent workouts, and a saved routine",
-        "secondary_image_caption": "Training totals, recent activity, and the next reusable routine in the signed-in dashboard.",
+        "hero_image": "images/projects/repit-workout-tracking.png",
+        "hero_image_alt": "RepIT active workout showing a recoverable timer, session details, exercises, and editable sets",
+        "hero_image_caption": "A recoverable live session keeps workout context, exercise order, repetitions, load, and rest data together.",
+        "secondary_image": "images/projects/repit-progress.png",
+        "secondary_image_alt": "RepIT progress dashboard showing training totals, consistency, personal records, and estimated one-repetition maximum",
+        "secondary_image_caption": "Completed sets become consistency, volume, personal-record, and estimated 1RM insights.",
         "overview": (
             "RepIT connects routine planning, active workout tracking, immutable history, "
             "strength analytics, and body measurements rather than treating them as "
