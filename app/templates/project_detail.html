@@ -27,8 +27,11 @@
             <p>{{ project.summary }}</p>
             <div class="case-study-actions">
               <a class="button button-primary" href="#brief">Read the case study <span aria-hidden="true">↓</span></a>
+              {% if project.live_url %}
+                <a class="case-study-repository" href="{{ project.live_url }}" target="_blank" rel="noreferrer">View live demo <span aria-hidden="true">&#8599;&#xfe0e;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
+              {% endif %}
               {% if project.repository_url %}
-                <a class="case-study-repository" href="{{ project.repository_url }}" target="_blank" rel="noreferrer">View repository <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a>
+                <a class="case-study-repository" href="{{ project.repository_url }}" target="_blank" rel="noreferrer">View repository <span aria-hidden="true">&#8599;&#xfe0e;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
               {% endif %}
             </div>
           </div>
@@ -41,7 +44,7 @@
                 <dd>{{ project.role }}</dd>
               </div>
               <div>
-                <dt>Selected evidence</dt>
+                <dt>Key result</dt>
                 <dd>{{ project.highlight }}</dd>
               </div>
               <div>

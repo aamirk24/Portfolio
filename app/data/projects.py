@@ -8,7 +8,7 @@ FEATURED_PROJECTS = (
             "A research platform that connects academic metadata, citation graphs, "
             "and semantic embeddings to make relevant papers easier to discover."
         ),
-        "highlight": "29 API endpoints",
+        "highlight": "29 endpoints · 32 tests",
         "technologies": ("FastAPI", "PostgreSQL", "pgvector", "Docker"),
         "role": "Individual project",
         "repository_url": "https://github.com/aamirk24/scholargraph",
@@ -48,7 +48,7 @@ FEATURED_PROJECTS = (
             "A server-authoritative multiplayer strategy game with a minimax opponent, "
             "real-time rooms, and resilient player reconnection."
         ),
-        "highlight": "54 passing tests",
+        "highlight": "70% dissertation · 54 tests",
         "technologies": ("Python", "Flask", "Socket.IO", "pytest"),
         "role": "Individual dissertation",
         "repository_url": "https://github.com/aamirk24/Nonaga",
@@ -82,41 +82,43 @@ FEATURED_PROJECTS = (
     {
         "slug": "repit",
         "title": "RepIT",
-        "category": "Full-stack software",
+        "category": "Full-stack / Data",
         "year": "2025",
         "summary": (
-            "A workout platform for building routines, logging live sessions, and "
-            "tracking body measurements through a relational data model."
+            "A production-deployed strength-training platform for planning routines, "
+            "recording recoverable workouts, and analysing long-term progress."
         ),
-        "highlight": "1,500+ exercises cached",
-        "technologies": ("Flask", "SQLAlchemy", "JavaScript", "Chart.js"),
+        "highlight": "Live product · 35 tests",
+        "technologies": ("Flask", "PostgreSQL", "SQLAlchemy", "Chart.js"),
         "role": "Individual project",
-        "repository_url": None,
+        "repository_url": "https://github.com/aamirk24/RepIT",
+        "live_url": "https://repit-inq2.onrender.com/",
         "hero_image": "images/projects/repit-landing.png",
-        "hero_image_alt": "RepIT landing page with a fitness-focused hero and sign-up action",
-        "hero_image_caption": "The public entry point establishes RepIT as a focused workout-planning product.",
+        "hero_image_alt": "RepIT landing page introducing its strength-training workflow and dashboard",
+        "hero_image_caption": "The public product entry point connects planning, live training, and progress in one workflow.",
         "secondary_image": "images/projects/repit-dashboard.png",
-        "secondary_image_alt": "RepIT welcome-back dashboard showing workout history and saved routines",
-        "secondary_image_caption": "Workout history and reusable routines brought together in the signed-in dashboard.",
+        "secondary_image_alt": "RepIT dashboard showing training statistics, recent workouts, and a saved routine",
+        "secondary_image_caption": "Training totals, recent activity, and the next reusable routine in the signed-in dashboard.",
         "overview": (
-            "RepIT was designed to make workout planning and progress tracking part of "
-            "one continuous flow, from saving routines to logging sets during a live "
-            "session and reviewing body measurements later."
+            "RepIT connects routine planning, active workout tracking, immutable history, "
+            "strength analytics, and body measurements rather than treating them as "
+            "separate tools. It began as a university Flask project and was rebuilt into "
+            "a deployed product with explicit data-integrity and operational boundaries."
         ),
         "contribution": (
-            "I built the Flask application independently, including authentication, "
-            "user-specific routes, the relational schema, routine planning, live workout "
-            "logging, exercise data ingestion, and measurement visualisations."
+            "I independently rebuilt the application across its Flask services, relational "
+            "model, authentication, recoverable workout lifecycle, catalogue synchronisation, "
+            "analytics, responsive interface, automated checks, and production deployment."
         ),
         "decisions": (
-            "Modelled users, exercises, routines, sessions, sets, and measurements with foreign keys and many-to-many SQLAlchemy relationships.",
-            "Cached more than 1,500 ExerciseDB records locally and used scheduled refresh jobs to reduce repeated external API requests.",
-            "Used Flask-Login, password hashing, and protected routes to keep each user's fitness data separated.",
+            "Made active workouts recoverable and completed workouts immutable, with transaction-safe services and database constraints protecting ownership, ordering, and valid set values.",
+            "Replaced the retired paid API dependency with a checksum-verified snapshot of 873 Free Exercise DB records, while snapshotting exercise identity into completed history.",
+            "Kept kilograms and centimetres as canonical storage while providing metric and imperial presentation, defensible volume and estimated 1RM calculations, and accessible alternatives to charts.",
         ),
         "outcomes": (
-            "Delivered saved routines, live session logging, set, repetition, and weight tracking, and body-measurement charts.",
-            "Built a reusable local exercise catalogue from more than 1,500 external records.",
-            "Demonstrated a complete Flask workflow spanning authentication, relational modelling, external data, and interactive reporting.",
+            "Deployed the application through Render and Neon PostgreSQL with migrations, health checks, structured logging, security headers, and concurrency-safe startup preparation.",
+            "Delivered reusable routines, resumable live sessions, immutable workout history, measurement tracking, personal records, streaks, volume, and estimated 1RM trends.",
+            "Created 35 passing automated tests alongside migration, compilation, and dependency-audit checks in GitHub Actions.",
         ),
     },
     {
@@ -128,7 +130,7 @@ FEATURED_PROJECTS = (
             "A real-time auction system with role-based workflows, live bidding, "
             "test payments, notifications, and server-side bid validation."
         ),
-        "highlight": "17 backlog features",
+        "highlight": "17 backlog features delivered",
         "technologies": ("Flask", "SQLAlchemy", "Socket.IO", "Stripe"),
         "role": "Team of six",
         "repository_url": None,
@@ -168,7 +170,7 @@ FEATURED_PROJECTS = (
             "A five-class text-classification study comparing multiple models and "
             "engineered language features from movie overviews."
         ),
-        "highlight": "2,500 overviews analysed",
+        "highlight": "66.2% accuracy · 2,500 overviews",
         "technologies": ("Python", "TMDB API", "WEKA", "scikit-learn"),
         "role": "Individual project",
         "repository_url": None,
@@ -201,36 +203,35 @@ FEATURED_PROJECTS = (
         "category": "Hackathon / Applied AI",
         "year": "2025",
         "summary": (
-            "A hackathon prototype pairing facial-emotion predictions with Spotify "
-            "to generate mood-aligned playlists and confidence scores."
+            "A two-person hackathon prototype that classifies a visible facial expression "
+            "with a pretrained model and matches its label to a Spotify playlist."
         ),
-        "highlight": "Team of two",
-        "technologies": ("Python", "Flask", "Spotify API", "Machine learning"),
-        "role": "Team of two",
-        "repository_url": "https://github.com/aamirk24/vibe-check-final",
+        "highlight": "Two-day build · 18 tests",
+        "technologies": ("Flask", "Hugging Face", "PyTorch", "Spotify API"),
+        "role": "Two-person hackathon team",
+        "repository_url": "https://github.com/aamirk24/vibe-check",
         "hero_image": "images/projects/vibecheck-results.png",
-        "hero_image_alt": "VibeCheck mood-classification result with confidence score and playlist recommendation",
-        "hero_image_caption": "A detected mood, confidence score, and music recommendation presented as one result flow.",
-        "secondary_image": "images/projects/vibecheck-playlist.png",
-        "secondary_image_alt": "VibeCheck generated Spotify playlist and user feedback controls",
-        "secondary_image_caption": "The generated playlist remains actionable through embedded playback and feedback controls.",
+        "hero_image_alt": "VibeCheck facial-expression prediction with a confidence score and Spotify recommendation",
+        "hero_image_caption": "A predicted expression label, confidence score, and playlist recommendation in one result flow.",
         "overview": (
-            "VibeCheck explored a playful question during a hackathon: could a predicted "
-            "facial emotion become a useful starting point for music discovery?"
+            "Built during the two-day Encode Vibe Coding Hackathon in London, VibeCheck "
+            "explored how existing AI and music services could become a playful web "
+            "experience under tight delivery constraints."
         ),
         "contribution": (
-            "Working in a team of two, I co-created a prototype that connected a "
-            "pretrained facial-emotion model with Spotify-based playlist generation."
+            "Working in a team of two, I co-created the Flask prototype connecting webcam "
+            "capture, pretrained Hugging Face inference, Spotify search and playback, "
+            "confidence reporting, and optional corrective-feedback logging."
         ),
         "decisions": (
-            "Used a pretrained model so the limited hackathon time could focus on integration and the user journey rather than model training.",
-            "Returned confidence scores alongside the emotion prediction to make the model output more transparent.",
-            "Connected the predicted mood to Spotify API results to turn an AI inference into an immediate user-facing outcome.",
+            "Used the pretrained dima806 facial-expression classifier without claiming model training, fine-tuning, or ownership, keeping the work focused on integration and user experience.",
+            "Described outputs as visible facial-expression predictions rather than reliable measurements of internal mood, and surfaced both confidence and corrective feedback.",
+            "Mapped predicted labels to Spotify search phrases, embedded the first matching playlist, and made Comet ML logging optional with an explicit privacy notice.",
         ),
         "outcomes": (
-            "Produced a working hackathon prototype within the event's time constraints.",
-            "Combined computer-vision inference and an external music API in one end-to-end interaction.",
-            "Demonstrated rapid collaborative prototyping and integration across distinct services.",
+            "Produced a complete webcam-to-playlist interaction during a two-day collaborative hackathon.",
+            "Added 18 isolated automated tests and GitHub Actions without requiring model downloads, credentials, or external network calls.",
+            "Improved the prototype with accessible feedback states, clearer privacy wording, safer request handling, and in-memory Spotify token caching.",
         ),
     },
 )
